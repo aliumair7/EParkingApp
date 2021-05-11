@@ -18,7 +18,7 @@ export const images = {
     challan: require('../assets/images/challans.png'),
   
     hospital: require('../assets/images/hospital.png'),
-    camera: require('../assets/images/camera.png'),
+    camera: require('../assets/images/camera.jpg'),
     CityTraffic: require('../assets/images/TrafficPolice.png')
 
   };

@@ -8,6 +8,7 @@ import wardenapi from '../../api/WardenApi';
 import Geolocation from '@react-native-community/geolocation';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 import { images } from '../../assets/images';
+import CamerModule from './CamerModule';
 
 const DataDetect = ({navigation}) => {
   const [pathimg,setpathimg]=React.useState('')
@@ -113,26 +114,35 @@ const Pickimage=()=>ImagePicker.openPicker({
     return (  
         <View>
           
-            
-         <Button  title="Open Camera"   onPress={()=>{OpenCamera()}}                            /> 
+            <CamerModule                  onPress={()=>{OpenCamera()}}          />
+    
           
         
-        {pathimg.length >0  && <TouchableOpacity onPress={()=>uploadimage()}>
+        {pathimg.length >0  ? (
+        <View style={{alignItems:'center'}}>
+        <TouchableOpacity onPress={()=>uploadimage()}>
              <Image          source={{uri:`data:${typeimg};base64,` + pathimg}}  style={{height:300,width:200}}     />
              
-             </TouchableOpacity> }
+             </TouchableOpacity>
+             </View>
+             
+             ): (<View>
+               <Text>Image will show here </Text>
+             </View>) }
               <ActivityIndicator animating={indicater} size="large" color={Colors.red800} />
                
              {
-               name.length>0 &&  ( <>
+               name.length>0 ? ( <View style={{alignItems:'center',margin:20}}>
                  <Text>Onwer name:{fetchdata.ownername}</Text>
                  <Text>Owner Father name:{fetchdata.ownerfathername}</Text>
                  <Text>Owner Cnic:{fetchdata.ownercnic}</Text>
                
                <Text h5 style={{color:'blue',paddingLeft:280}} 
                onPress={()=>{navigation.navigate('challandetails',{data:fetchdata,latt:latitude,long:longitude,imgurl:url})}}>go to details</Text> 
-                </>
-               )
+                </View>
+               ): (<View>
+               <Text>  Data Of user will appear here</Text> 
+               </View>)
               
 
              }

@@ -43,7 +43,8 @@ const PendingChallans = ({navigation}) => {
               </Text>
             </View>
           
-        
+            {datas.length >0 ?        
+      (  
         
         <FlatList
 
@@ -75,8 +76,13 @@ renderItem={({item})=>{return(
 keyExtractor={item => item._id}
 />
 
-       
-          
+)
+
+:(  <View style={{alignItems:'center',marginTop:300}}>
+       <Text>No Record Found</Text>
+       </View>
+  )       
+}      
     
       </SafeAreaView>
     </>

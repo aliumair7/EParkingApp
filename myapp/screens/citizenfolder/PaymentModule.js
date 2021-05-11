@@ -14,6 +14,7 @@ import { Input } from 'react-native-elements';
 import { Divider } from 'react-native-elements';
 import moment from 'moment';
 import { Card, Title, Paragraph } from 'react-native-paper';
+import { DataTable } from 'react-native-paper';
 
 stripe.setOptions({
     publishableKey: 'pk_test_51H2YSHBx7QxnH8iB2Asf4DFgrnBWKnA8SPxAWzLamx09XE0A6JaqTUn54lOQ8IwWPpKfQFHgSKub4mwmGWLpefaD00GwMciW4k',
@@ -80,9 +81,44 @@ const PaymentComponent = ({ route, navigation }) => {
             <Text style={{padding:10,fontSize:20,fontWeight:'bold'}}>Traffic Police </Text>
             <Image      source={images.CityTraffic}    style={{width:150,height:150}}                          />
       <Text style={{padding:20,fontSize:20,fontWeight:'bold'}}>Challan Details</Text>
+      <DataTable>
+      <DataTable.Row>
+      <DataTable.Cell>Name</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.ownername}</DataTable.Cell>
      
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Gmail</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.ownergmail}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>City</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.city}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>CNIC</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.ownercnic}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Mobile</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.ownernumber}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Amount</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.amount}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Number Plate</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.registrationnumber.substring(0,3)}-{dataitem.registrationnumber.substring(3,5)}-{dataitem.registrationnumber.substring(5,9)}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Lattitude,Longitude</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.latitude},{dataitem.longitude}</DataTable.Cell>
+    </DataTable.Row>
       
-           <View style={{padding:20,margin:10,marginBottom:10,alignItems:'center',backgroundColor:colors.disabled,borderWidth:2,borderColor:'black',borderRadius:20}}>
+      </DataTable>
+      
+         {/*  <View style={{padding:20,margin:10,marginBottom:10,alignItems:'center',backgroundColor:colors.disabled,borderWidth:2,borderColor:'black',borderRadius:20}}>
       
            <Text h4 style={{borderBottomWidth:2}}> {dataitem.ownername}</Text>
            
@@ -94,7 +130,7 @@ const PaymentComponent = ({ route, navigation }) => {
             <Text h4 style={{textDecorationLine: 'underline'}}>Owner City:  {dataitem.city} </Text>
             <Text h4 style={{textDecorationLine: 'underline'}}>Issue date: {moment(dataitem.issueDate).format('YYYY-MM-DD')} </Text>
             
-            </View>
+    </View>   */}
             <TouchableOpacity
                           onPress={()=>ChallanPayment()}
                           style={[loginStyle.loginrightContainer]}>

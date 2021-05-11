@@ -58,6 +58,10 @@ export default StyleSheet.create({
     height: 56,
     width: 56,
   },
+  iconmy:{
+      height:80,
+      width:80,
+  },
   ////////////////Reset Password Auth//////////////
   resetImageAuth: {
     resizeMode: 'contain',

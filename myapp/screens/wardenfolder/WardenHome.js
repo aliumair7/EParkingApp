@@ -41,8 +41,8 @@ const AVATAR_SIZE = 70;
 
       <SafeAreaView style={appStyles.body}>
         
-        
-        <FlatList
+{datas.length >0 ?        
+      (  <FlatList
 
 data={datas}
 keyExtractor={(item)=>item.key}
@@ -69,7 +69,13 @@ renderItem={({item})=>{return(
     )
 }}
 keyExtractor={item => item._id}
-/>
+/>)
+
+:(  <View style={{alignItems:'center',marginTop:300}}>
+       <Text>No Record Found</Text>
+       </View>
+  )
+}
 
        
           

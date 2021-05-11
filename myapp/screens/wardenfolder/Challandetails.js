@@ -7,13 +7,15 @@ import { addchallan } from '../../reduxapp/myaction';
 import { images } from '../../assets/images';
 import { TouchableOpacity } from 'react-native';
 import loginStyle from '../../styles/loginStyle';
+import { DataTable } from 'react-native-paper';
 
 const ChallanDetails = ({ route, navigation }) => {
     const dispatch=useDispatch()
     const users = useSelector(state => state.user)
     
     const { data,latt,long,imgurl} = route.params;
-    const[amounts,setamount]=React.useState(6)
+    
+    const[amounts,setamount]=React.useState()
 
 
     const postchallan=()=>{
@@ -40,10 +42,45 @@ const ChallanDetails = ({ route, navigation }) => {
     
     return ( 
         <View style={{alignItems:'center'}}>
-            <Text style={{padding:2,fontSize:20,fontWeight:'bold'}}>Traffic Police </Text>
+            <Text style={{padding:10,fontSize:20,fontWeight:'bold'}}>Traffic Police </Text>
             <Image      source={images.CityTraffic}    style={{width:150,height:150}}                          />
-      <Text style={{padding:3,fontSize:20,fontWeight:'bold'}}>Challan Details</Text>
+      <Text style={{padding:20,fontSize:20,fontWeight:'bold'}}>Owner Details</Text>
+      <TextInput    placeholder="Enter amount"            value={amounts} onChangeText={(text)=>setamount(text)}       />
+      <DataTable>
+
+
+      <DataTable.Row>
+      <DataTable.Cell>Name</DataTable.Cell>
+      <DataTable.Cell numeric>{data.ownername}</DataTable.Cell>
+    </DataTable.Row>
+
+    <DataTable.Row>
+      <DataTable.Cell>Father</DataTable.Cell>
+      <DataTable.Cell numeric>{data.ownerfathername}</DataTable.Cell>
+    </DataTable.Row>
+      <DataTable.Row>
+      <DataTable.Cell>Gmail</DataTable.Cell>
+      <DataTable.Cell numeric>{data.ownergmail}</DataTable.Cell>
+    </DataTable.Row>
+      <DataTable.Row>
+      <DataTable.Cell>CNIC</DataTable.Cell>
+      <DataTable.Cell numeric>{data.ownercnic}</DataTable.Cell>
+     
+    </DataTable.Row>
+    
+    
+    
+    <DataTable.Row>
+      <DataTable.Cell>Number Plate</DataTable.Cell>
+      <DataTable.Cell numeric>{data.registrationnumber.substring(0,3)}-{data.registrationnumber.substring(3,5)}-{data.registrationnumber.substring(5,9)}</DataTable.Cell>
+    </DataTable.Row>
+    <DataTable.Row>
+      <DataTable.Cell>Lattitude,Longitude</DataTable.Cell>
+      <DataTable.Cell numeric>{latt},{long}</DataTable.Cell>
+    </DataTable.Row>
       
+      </DataTable>
+         {/*
            <View style={{margin:10,alignItems:'center',borderWidth:2,borderColor:'black',borderRadius:20}}>
            <TextInput    placeholder="Enter amount"            value={amounts} onChangeText={(text)=>setamount(text)}       />
             <Text style={{borderWidth:2}}>Owner Cnic: {data.ownercnic} </Text>
@@ -58,6 +95,7 @@ const ChallanDetails = ({ route, navigation }) => {
             <Text>Warden id {users.wardenid}</Text>
             <Text>challan id:{data._id}</Text>
             </View>
+            */}
             <TouchableOpacity
                           onPress={()=>postchallan()}
                           style={[loginStyle.loginrightContainer]}>

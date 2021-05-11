@@ -7,6 +7,7 @@ import UnpaidChallans from '../screens/adminfolder/UnpaidAllchallans';
 import AdminProfile from '../screens/adminfolder/AdminProfile';
 import AllWardens from '../screens/adminfolder/Wardens';
 import AddMarkers from '../screens/adminfolder/AddLocationMarker';
+import AddRecords from '../screens/adminfolder/AddRecords';
 
 
 
@@ -16,6 +17,7 @@ const UnpaidChallanStack=createStackNavigator()
 const MangeWardensStack=createStackNavigator()
 const AdminProfileStack=createStackNavigator()
 const AddMarkerStack=createStackNavigator()
+const AddRecordsStack=createStackNavigator()
 
 
 
@@ -35,7 +37,7 @@ const HomeStacNavigator=({navigation})=>{
 
     }>
 
-        <HomeStack.Screen       name="CHome"    component={HomeScreen}   
+        <HomeStack.Screen       name="AHome"    component={HomeScreen}   
          options={{title:'Home',
         headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#009387" 
          onPress={()=>{navigation.openDrawer()}} />)
@@ -43,6 +45,8 @@ const HomeStacNavigator=({navigation})=>{
          
          
             />
+
+
     </HomeStack.Navigator>
 )}
 
@@ -97,7 +101,7 @@ const AdminProfileStacNavigator=({navigation})=>{
 
     }>
 
-        <AdminProfileStack.Screen       name="CitizenProfile"    component={AdminProfile}   
+        <AdminProfileStack.Screen       name="AdminProfile"    component={AdminProfile}   
          options={{title:'Profile',
         headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#009387" 
          onPress={()=>{navigation.openDrawer()}} />)
@@ -138,6 +142,32 @@ const ManageWardensStacNavigator=({navigation})=>{
 
 
 
+const AddRecordsStacNavigator=({navigation})=>{
+    return(
+    <AddRecordsStack.Navigator screenOptions={{
+        headerStyle:{
+            backgroundColor:"#009387"
+        },
+        headerTintColor:'#fff',
+        headerTitleStyle:{
+            fontWeight:'bold'
+        }
+        
+    }
+
+    }>
+             <AddRecordsStack.Screen       name="ARecords"    component={AddRecords}   
+         options={{title:'Add Owner Records',
+        headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#009387" 
+         onPress={()=>{navigation.openDrawer()}} />)
+        }} 
+         
+         
+            />
+        
+    </AddRecordsStack.Navigator>
+)} 
+
 
 const AddMarkerStacNavigator=({navigation})=>{
     return(
@@ -170,6 +200,7 @@ const AdminDrawerNavigator = () => {
             <Drwaer.Screen      name="Home" component={HomeStacNavigator}  />
             <Drwaer.Screen      name="Unpaid Challans" component={UnpaidChallanStacNavigator}  />
             <Drwaer.Screen      name="Wardens" component={ManageWardensStacNavigator}  />
+            <Drwaer.Screen      name="Add Records" component={AddRecordsStacNavigator}  />
             <Drwaer.Screen      name="Add Location" component={AddMarkerStacNavigator}  />
             <Drwaer.Screen      name="Profile" component={AdminProfileStacNavigator}  />
            

@@ -44,6 +44,9 @@ getallplaces=()=>this.get("/api/locations/markers")
 getpaidwarden=(id)=>this.get("/api/challan/paidbywarden/"+id)
 //unpaid challan for warden
 getunpaidwarden=(id)=>this.get("/api/challan/unpaidbywarden/"+id)
+//Admin Add owner record in database
+addownerrecord=(data)=>this.post("/api/records/addrecords",data)
+
 //store citizen token
 storeCitizen= async (value) => {
   try {

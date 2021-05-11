@@ -12,6 +12,7 @@ import { Text } from 'react-native';
 import StripePayment from './myapp/screens/citizenfolder/StripeComponent';
 import MakePDF from './myapp/screens/wardenfolder/MakeChallanPDF';
 import GooglePlacesInput from './myapp/screens/adminfolder/SearchPalce';
+import CamerModule from './myapp/screens/wardenfolder/CamerModule';
 
 
 
@@ -20,12 +21,13 @@ const store = createStore(myReducer, applyMiddleware(thunk));
 const App  = () => {
   return (
     <>
+   
    <Provider store={store}>
     
     
     <WrapApp />
     <Toast ref={(ref) => Toast.setRef(ref)} />
-  </Provider>  
+  </Provider>   
   
   </>
      
