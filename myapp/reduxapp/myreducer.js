@@ -4,7 +4,8 @@ intialstate={
     citizens:'',
     challans:[],
     response:[],
-    Marker:[]
+    Marker:[],
+   PostChallanStatus:"",
 }
 export default myReducer=(state = intialstate, action) => {
     switch (action.type) {
@@ -43,6 +44,10 @@ export default myReducer=(state = intialstate, action) => {
           return { ...state,
                    Marker:action.payload
            }
+           case 'Post_Status':
+            return { ...state,
+              PostChallanStatus:action.payload
+             }
       default:
         return state
     }

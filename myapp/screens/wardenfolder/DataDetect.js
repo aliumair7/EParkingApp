@@ -8,10 +8,12 @@ import wardenapi from '../../api/WardenApi';
 import Geolocation from '@react-native-community/geolocation';
 import { ActivityIndicator, Colors } from 'react-native-paper';
 import { images } from '../../assets/images';
+import {useSelector,useDispatch} from 'react-redux'
 import CamerModule from './CamerModule';
 
 const DataDetect = ({navigation}) => {
   const [pathimg,setpathimg]=React.useState('')
+  const challans = useSelector(state => state.challans)
   const [url,setUrl] = React.useState("")
   const[typeimg,settype]=React.useState("")
   const[fetchdata,setfetchdata]=React.useState({});
@@ -24,9 +26,16 @@ const DataDetect = ({navigation}) => {
     Geolocation.getCurrentPosition(position=>{
         setlatitude(position.coords.latitude)
         setlongitude(position.coords.longitude)
+       
     }, error => console.log(error.message),{enableHighAccuracy:false, timeout:20000}              )
+    setpathimg("")
+    settype("")
+    setUrl("")
+    setfetchdata({})
+    setname("")
+    settype("")
 
-},[])
+},[challans])
 
   React.useEffect(()=>{
     if(url){
@@ -109,6 +118,8 @@ const Pickimage=()=>ImagePicker.openPicker({
  
 
 });
+
+
  
  
     return (  
@@ -121,7 +132,8 @@ const Pickimage=()=>ImagePicker.openPicker({
         {pathimg.length >0  ? (
         <View style={{alignItems:'center'}}>
         <TouchableOpacity onPress={()=>uploadimage()}>
-             <Image          source={{uri:`data:${typeimg};base64,` + pathimg}}  style={{height:300,width:200}}     />
+             <Image          source={{uri:`data:${typeimg};base64,` + pathimg}} 
+              style={{height:300,width:220,resizeMode:'cover',borderRadius:12}}     />
              
              </TouchableOpacity>
              </View>

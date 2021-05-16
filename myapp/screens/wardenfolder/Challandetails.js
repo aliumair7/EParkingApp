@@ -13,29 +13,37 @@ const ChallanDetails = ({ route, navigation }) => {
     const dispatch=useDispatch()
     const users = useSelector(state => state.user)
     
+    
     const { data,latt,long,imgurl} = route.params;
+    
     
     const[amounts,setamount]=React.useState()
 
 
     const postchallan=()=>{
+     if(amounts){
         const postdata={registrationnumber:data.registrationnumber,ownercnic:data.ownercnic,
             name:data.ownername,gmail:data.ownergmail,number:data.ownermobilenumber,
             city:data.owneraddress,amount:amounts,latitude:latt,longitude:long,wardenid:users.wardenid,
-            challanid:data._id
+            challanid:data._id,imgid:imgurl
             }
        if( dispatch(addchallan(postdata)) ) {
-           alert("Succuesfully post")
-           navigation.navigate('Challan')
+        alert("Succuesfully post")
+        navigation.popToTop()
         navigation.navigate('wHome')
+       
+    
       }else{
-          alert('error while posting challan try aggain')
-          navigation.navigate('challandetails')
-
+        
+        alert('error while posting challan try aggain')
+        navigation.navigate('challandetails')
       }
 
       
-          
+    }
+    else{
+      alert("fill amount first !!!")
+    }
            
     }
 

@@ -9,11 +9,12 @@ import { images } from '../../assets/images';
 
 const CitizenProfile = () => {
     const citizen = useSelector(state => state.citizens)
+    console.log(citizen)
     const dispatch=useDispatch()
     const deltoken=()=>{
         dispatch(removeCitizentoken())
     }
-    console.log(citizen)
+    
     return ( 
         <View style={styles.root}>
         <LinearGradient
@@ -41,8 +42,14 @@ const CitizenProfile = () => {
          </Card>
          <Card style={styles.mycard} onPress={()=>alert('mobile')}>
             <View style={styles.cardContent}>
-            <Icon      name="email" size={32} color="#006aff"                   />
+            <Icon      name="card-account-details" size={32} color="#006aff"                   />
               <Text style={styles.mytext}>{citizen.cnic}</Text>
+            </View>
+         </Card>
+         <Card style={styles.mycard} onPress={()=>alert('mobile')}>
+            <View style={styles.cardContent}>
+            <Icon      name="cellphone" size={32} color="#006aff"                   />
+              <Text style={styles.mytext}>{citizen.mobile}</Text>
             </View>
          </Card>
        

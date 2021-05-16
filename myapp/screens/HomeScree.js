@@ -1,9 +1,9 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { Text, View,StyleSheet, ImageBackground } from 'react-native';
-import colors from '../assets/colors';
 import BackButton from '../Components/BackButton';
 import appStyles from '../styles/appStyles';
+import colors from '../assets/colors';
 
 const HomeScreen = ({navigation}) => {
     return ( 
@@ -42,15 +42,15 @@ const styles = StyleSheet.create({
     },
     txt1:{
         width:'70%',
-        borderColor:'blue',
+        borderColor:'#28D6C0',
         borderWidth:4,
         alignSelf:'center',
         borderRadius:15,
         textAlign:'center',
-        fontSize:20,
+        fontSize:18,
         fontWeight:'bold',
-        backgroundColor:'#CCFFE5',
-        color:'purple',
+        backgroundColor:'#28D6C0',
+        color:colors.white,
         marginBottom:20
         
         

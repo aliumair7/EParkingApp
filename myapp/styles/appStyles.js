@@ -153,6 +153,21 @@ export default StyleSheet.create({
     width: 15,
     resizeMode: 'contain',
   },
+  IconDrawerPending: {
+    height: 25,
+    width: 25,
+    resizeMode: 'contain',
+  },
+  IconWarden:{
+    height: 30,
+    width: 30,
+    resizeMode: 'contain',
+  },
+  IconGuideline:{
+    height: 30,
+    width: 30,
+    resizeMode: 'contain',
+  },
   Icon24Auth: {
     height: 24,
     width: 24,

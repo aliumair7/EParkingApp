@@ -19,7 +19,11 @@ export const images = {
   
     hospital: require('../assets/images/hospital.png'),
     camera: require('../assets/images/camera.jpg'),
-    CityTraffic: require('../assets/images/TrafficPolice.png')
+    CityTraffic: require('../assets/images/TrafficPolice.png'),
+    Pending: require('../assets/images/pending.jpg'),
+    Warden: require('../assets/images/WardenIcon.png'),
+    Guidelines: require('../assets/images/Guidelines.jpg'),
+
 
   };
   

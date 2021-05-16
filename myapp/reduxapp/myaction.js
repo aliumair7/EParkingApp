@@ -93,9 +93,15 @@ export const addchallan=(postdata)=>{
   return async(dispatch)=>{
     wardenapi.postchallan(postdata)
         .then(data=>{
+          
           dispatch({type:'Post_Challan',payload:data})   
-        
-        }).catch(err=>console.log(err))
+          dispatch({type:'Post_Status',payload:"Succeeed"})  
+
+       
+              
+        }).catch(err=>{
+          dispatch({type:'Post_Status',payload:"Failed"})  
+          console.log(err)})
 
   }
 }

@@ -10,6 +10,7 @@ import { Avatar } from 'react-native-elements';
 import { images } from '../../assets/images';
 const WardenProfile = ({navigation}) => {
     const users = useSelector(state => state.user)
+    console.log(users)
     const dispatch=useDispatch()
 
     const deltoken=()=>{
@@ -36,24 +37,18 @@ const WardenProfile = ({navigation}) => {
              alert('hello')
          }}>
             <View style={styles.cardContent}>
-                <Icon   name="email" size={32} color="#006aff"                                />
+                <Icon   name="account-outline" size={32} color="#006aff"                                />
               
-              <Text style={styles.mytext}>ali@gmail.com</Text>
+              <Text style={styles.mytext}>{users.fathername}</Text>
             </View>
          </Card>
          <Card style={styles.mycard} onPress={()=>alert('mobile')}>
             <View style={styles.cardContent}>
-            <Icon      name="email" size={32} color="#006aff"                   />
-              <Text style={styles.mytext}>Phone</Text>
+            <Icon      name="card-account-details" size={32} color="#006aff"                   />
+              <Text style={styles.mytext}>{users.wardenid}</Text>
             </View>
          </Card>
-         <Card style={styles.mycard}>
-            <View style={styles.cardContent}>
-                <Icon      name="email" size={32} color="#006aff"                   />
-            
-              <Text style={styles.mytext}>3500</Text>
-            </View>
-         </Card>
+      
          <View style={{flexDirection:"row",justifyContent:"space-around",padding:10}}>
             <Button 
              icon="account-edit"
