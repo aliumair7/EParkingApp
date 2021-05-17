@@ -62,7 +62,7 @@ const GuidelineStacNavigator=({navigation})=>{
     }>
 
         <GuidelineStack.Screen       name="CGuideline"    component={Guidelines}   
-         options={{title:'Home',
+         options={{title:'Guidelines for Parking',
         headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#28D6C0" 
          onPress={()=>{navigation.openDrawer()}} />)
         }} 

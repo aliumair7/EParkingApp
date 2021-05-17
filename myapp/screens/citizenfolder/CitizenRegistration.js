@@ -53,7 +53,7 @@ const CitizenRegistration = ({navigation}) => {
              <ScrollView showsVerticalScrollIndicator={false}>
             <View style={[loginStyle.loginbodyContainer]}>
               <View style={[{marginTop: 20}]}>
-                <Text style={[appStyles.h1Auth]}>Welcome! </Text>
+                <Text style={[appStyles.h1Auth]}>Welcome Citizen! </Text>
               </View>
               
               <View style={[appStyles.mt10]}>

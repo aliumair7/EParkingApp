@@ -23,6 +23,8 @@ export const images = {
     Pending: require('../assets/images/pending.jpg'),
     Warden: require('../assets/images/WardenIcon.png'),
     Guidelines: require('../assets/images/Guidelines.jpg'),
+    EParking: require('../assets/images/EParkingTitle.png'),
+    Untitled:require('../assets/images/Untitled.png')
 
 
   };

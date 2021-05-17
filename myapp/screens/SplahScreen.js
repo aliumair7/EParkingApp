@@ -30,7 +30,7 @@ const SplashScreen = ({navigation}) => {
             <Animatable.Image 
                 animation="bounceIn"
                 duraton="1500"
-            source={require('../assets/logo.png')}
+            source={require('.././assets/images/Untitled.png')}
             style={styles.logo}
             resizeMode="stretch"
             />
@@ -92,8 +92,10 @@ const styles = StyleSheet.create({
       paddingHorizontal: 30
   },
   logo: {
-      width: height_logo,
-      height: height_logo
+      width: 200,
+      height: 70,
+      borderRadius:10,
+      
   },
   title: {
       color: '#05375a',

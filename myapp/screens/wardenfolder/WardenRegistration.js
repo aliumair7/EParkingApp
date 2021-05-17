@@ -49,7 +49,7 @@ const WardenRegistration = ({navigation}) => {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={[loginStyle.loginbodyContainer]}>
               <View style={[{marginTop: 80}]}>
-                <Text style={[appStyles.h1Auth]}>Welcome! </Text>
+                <Text style={[appStyles.h1Auth]}>Welcome Warden! </Text>
               </View>
               <View style={[appStyles.mt10]}>
                 <Text style={[appStyles.h1Auth, {color: colors.defaultPurple}]}>
