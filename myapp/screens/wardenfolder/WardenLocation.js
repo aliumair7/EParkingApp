@@ -36,6 +36,9 @@ const WardenLocation =() => {
       <View style={styles.container}>
       <MapView
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+        showsUserLocation
+        showsTraffic
+        showsBuildings
         style={styles.map}
         region={{
           latitude: latitude,
@@ -49,7 +52,7 @@ const WardenLocation =() => {
         
         {  locations.map((marker,index)=>{
           return(
-                    <Marker    key={index}   coordinate={{longitude:marker.longitude,latitude:marker.latitude}}  title="MY current location"   /> 
+                    <Marker    key={index}   coordinate={{longitude:marker.longitude,latitude:marker.latitude}}  title="No Parking Area"   /> 
    
          ) })
            
@@ -84,7 +87,7 @@ const WardenLocation =() => {
 const styles = StyleSheet.create({
     container: {
     
-      height: 400,
+      height: 735,
       width: 400,
      
     },

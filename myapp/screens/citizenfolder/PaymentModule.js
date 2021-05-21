@@ -16,6 +16,7 @@ import moment from 'moment';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import { DataTable } from 'react-native-paper';
 
+
 stripe.setOptions({
     publishableKey: 'pk_test_51H2YSHBx7QxnH8iB2Asf4DFgrnBWKnA8SPxAWzLamx09XE0A6JaqTUn54lOQ8IwWPpKfQFHgSKub4mwmGWLpefaD00GwMciW4k',
     
@@ -27,8 +28,13 @@ const PaymentComponent = ({ route, navigation }) => {
     
 
     const{dataitem}=route.params
+    
     console.log(dataitem)
     
+
+
+    
+
   /*if(datas){
       if(dispatch(deletePendingChallan(dataitem.challanid)))
       {navigation.navigate('PChallans')  }
@@ -52,11 +58,12 @@ const PaymentComponent = ({ route, navigation }) => {
                 
               // await  wardenapi.postpayment({amount:dataitem.amount,tokenId:token.tokenId,token:token,
               //challan:dataitem}).then(data=>{
-                    if(dispatch(UpdatePendingChallan(dataitem._id,{amount:dataitem.amount,tokenId:token.tokenId,token:token,challan:dataitem})))
-                    {navigation.navigate('PChallans')  }
-                    else{
-                        alert("error came")
-                    }
+                    dispatch(UpdatePendingChallan(dataitem._id,
+                      {amount:dataitem.amount,tokenId:token.tokenId,token:token,challan:dataitem},navigation))
+                    
+                    
+                  
+                    
                   
                    
                 
@@ -65,12 +72,12 @@ const PaymentComponent = ({ route, navigation }) => {
                // .catch(err=>console.log(err))
             
                 
-                console.warn('Token created', { token });
+              
             
               }) 
         })
         .catch(error => {
-          console.warn('Payment failed', { error });
+          console.log('Payment failed', { error });
         }); 
         
     }
@@ -112,8 +119,8 @@ const PaymentComponent = ({ route, navigation }) => {
       <DataTable.Cell numeric>{dataitem.registrationnumber.substring(0,3)}-{dataitem.registrationnumber.substring(3,5)}-{dataitem.registrationnumber.substring(5,9)}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell>Lattitude,Longitude</DataTable.Cell>
-      <DataTable.Cell numeric>{dataitem.latitude},{dataitem.longitude}</DataTable.Cell>
+      <DataTable.Cell>Chalan Place</DataTable.Cell>
+      <DataTable.Cell numeric>{dataitem.placename}</DataTable.Cell>
     </DataTable.Row>
       
       </DataTable>

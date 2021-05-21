@@ -16,18 +16,19 @@ import CamerModule from './myapp/screens/wardenfolder/CamerModule';
 
 
 
+
 const store = createStore(myReducer, applyMiddleware(thunk));
 
 const App  = () => {
   return (
     <>
    
-   <Provider store={store}>
+ <Provider store={store}>
     
     
     <WrapApp />
     <Toast ref={(ref) => Toast.setRef(ref)} />
-  </Provider>   
+  </Provider>    
   
   </>
      

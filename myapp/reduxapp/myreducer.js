@@ -5,7 +5,7 @@ intialstate={
     challans:[],
     response:[],
     Marker:[],
-   PostChallanStatus:"",
+   PostChallanStatus:" ",
 }
 export default myReducer=(state = intialstate, action) => {
     switch (action.type) {

@@ -38,6 +38,7 @@ console.log("locations are",locations)
         <View style={styles.container}>
         <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          showsUserLocation
           style={styles.map}
           region={{
             latitude: latitude,
@@ -53,7 +54,7 @@ console.log("locations are",locations)
 
           {  locations.map((mar,index)=>{
               return(
-                      <Marker  key={index}    coordinate={{latitude:mar.latitude,longitude:mar.longitude}}  title="MY current location"   /> 
+                      <Marker  key={index}    coordinate={{latitude:mar.latitude,longitude:mar.longitude}}  title="No Parking Area"   /> 
      
            ) })
              
@@ -89,7 +90,7 @@ console.log("locations are",locations)
 const styles = StyleSheet.create({
     container: {
     
-      height: 400,
+      height: 735,
       width: 400,
      
     },

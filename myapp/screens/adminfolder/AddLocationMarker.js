@@ -14,7 +14,7 @@ const AddMarkers = () => {
     const[long,setlong]=React.useState()
     const[marker,setmarker]=React.useState()
 
-console.log(marker)
+
     React.useEffect(()=>{
         Geolocation.getCurrentPosition(position=>{
             setlatitude(position.coords.latitude)
@@ -34,6 +34,9 @@ console.log(marker)
           
         <MapView
           provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          showsUserLocation
+          showsCompass
+          showsMyLocationButton
           style={styles.map}
           region={{
             latitude: latitude,
@@ -84,7 +87,7 @@ console.log(marker)
 
 const styles = StyleSheet.create({
     container: {
-      height: 600,
+      height: 735,
       width: 400,
     
       

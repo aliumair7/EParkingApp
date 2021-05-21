@@ -114,7 +114,7 @@ const MakePDF = () => {
           </View>
         </TouchableOpacity>
        
-        <Button  title="Upload" onPress={()=>{uploadfile()}}                       />
+        <Button  title="Upload" onPress={()=>{uploadfiles()}}                       />
       </View>
     </SafeAreaView>
   );

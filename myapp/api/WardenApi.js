@@ -16,7 +16,7 @@ wardenlogin=(data)=>this.post("/api/warden/login",data)
 getwarden=(wardenid)=>this.get("/api/warden/"+wardenid)
 //update warden profile
 updatewarden=(id,data)=>this.put("/api/warden/update/"+id,data)
-
+//get records against image link
 getrecords=(data)=>this.post("/api/challan/dummy",data);
 postchallan=(data)=>this.post("/api/challan/add",data);
 

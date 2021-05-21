@@ -10,6 +10,8 @@ import { ActivityIndicator, Colors } from 'react-native-paper';
 import { images } from '../../assets/images';
 import {useSelector,useDispatch} from 'react-redux'
 import CamerModule from './CamerModule';
+import { PERMISSIONS } from 'react-native-permissions';
+import { requireExtStoragePermissionIfNeeded } from '../../../permissions';
 
 const DataDetect = ({navigation}) => {
   const [pathimg,setpathimg]=React.useState('')
@@ -20,8 +22,24 @@ const DataDetect = ({navigation}) => {
   const[name,setname]=React.useState("")
   const[latitude,setlatitude]=React.useState(0)
   const[longitude,setlongitude]=React.useState(0)
+  const [photo, setPhoto] = React.useState(undefined);
+  const [photoRecovered, setPhotoRecovered] = React.useState(false)
 
   const[indicater,setindicater]=React.useState(false)
+  React.useEffect(() => {
+    if (Platform.OS !== 'android') {
+        return
+    }
+
+    ImagePicker.recoverLastImageUri().then(image => {
+        if(image){
+            console.log("Image recovered", image);
+            setPhoto(image)
+            setpathimg(image.data)
+            setPhotoRecovered(true)
+        }
+    })
+}, []) 
   React.useEffect(()=>{
     Geolocation.getCurrentPosition(position=>{
         setlatitude(position.coords.latitude)
@@ -40,7 +58,7 @@ const DataDetect = ({navigation}) => {
   React.useEffect(()=>{
     if(url){
       setindicater(true)
-      wardenapi.getrecords({photo:url}).then((data)=>{
+      wardenapi.getrecords({link:url}).then((data)=>{
         setindicater(false)
         console.log(data) 
         setfetchdata(data)
@@ -56,23 +74,44 @@ const DataDetect = ({navigation}) => {
 
 
 
- const OpenCamera=()=> {ImagePicker.openCamera({
-  width: 300,
-  height: 400,
+ const OpenCamera=async ()=> {
+  setPhotoRecovered(false)
+  await requireExtStoragePermissionIfNeeded(PERMISSIONS.ANDROID.READ_EXTERNAL_STORAGE)
+  .then(granted => {
+      if (granted) {
+          return requireExtStoragePermissionIfNeeded(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE);
+      }
+      throw new Error('NO PERMISSIONS');
+  })
+  .then(isPermissionGranted => {
+      if (isPermissionGranted) {
+          return true;
+      }
+      throw new Error('NO PERMISSIONS');
+  }).then(() => {
+  
+  ImagePicker.openCamera({
+  width: 500, height: 550, 
   cropping: true,
+   compressImageQuality: 0.4,
+   quality: 0.9,
+maxWidth: 1200,
+maxHeight: 1200,
+  
   includeBase64: true,
-}).then(image => {
+  })
+.then(image => {
   console.log(image)
   setpathimg(image.data)
     
   settype("jpeg")
-  
+})  
   
 })
 
 //wardenapi.getrecords({pathimg}).then(data=> console.log(data)).catch(err=>console.log(err))
 
- 
+
  }
  /*if(pathimg){
   wardenapi.getrecords({pathimg}).then(data=> console.log(data)).catch(err=>console.log(err))

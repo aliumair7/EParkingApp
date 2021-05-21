@@ -8,36 +8,58 @@ import { images } from '../../assets/images';
 import { TouchableOpacity } from 'react-native';
 import loginStyle from '../../styles/loginStyle';
 import { DataTable } from 'react-native-paper';
+import Geocoder from 'react-native-geocoding';
+
 
 const ChallanDetails = ({ route, navigation }) => {
+
     const dispatch=useDispatch()
     const users = useSelector(state => state.user)
+   
     
     
     const { data,latt,long,imgurl} = route.params;
     
     
     const[amounts,setamount]=React.useState()
+    const[placename,setplace]=React.useState('')
+    React.useEffect(()=>{
+      Geocoder.init("AIzaSyB7UoIU88kGuokct6VpdGUDfJ_ZLvmOCWU", {language : "en"});
+      Geocoder.from({
+        latitude : latt,
+        longitude : long
+      })
+  .then(json => {
+          var addressComponent = json.results[0].address_components[0];
+    console.log(addressComponent.long_name);
+    setplace(addressComponent.long_name)
+  })
+  .catch(error => console.warn(error));
 
+    }
 
+    ,[])
+
+    
+        
+          
+
+   
+      
+
+    
     const postchallan=()=>{
      if(amounts){
         const postdata={registrationnumber:data.registrationnumber,ownercnic:data.ownercnic,
             name:data.ownername,gmail:data.ownergmail,number:data.ownermobilenumber,
             city:data.owneraddress,amount:amounts,latitude:latt,longitude:long,wardenid:users.wardenid,
-            challanid:data._id,imgid:imgurl
+            challanid:data._id,imgid:imgurl,place:placename
             }
-       if( dispatch(addchallan(postdata)) ) {
-        alert("Succuesfully post")
-        navigation.popToTop()
-        navigation.navigate('wHome')
-       
+            
+            dispatch(addchallan(postdata,navigation))
     
-      }else{
-        
-        alert('error while posting challan try aggain')
-        navigation.navigate('challandetails')
-      }
+            
+      
 
       
     }
@@ -83,8 +105,8 @@ const ChallanDetails = ({ route, navigation }) => {
       <DataTable.Cell numeric>{data.registrationnumber.substring(0,3)}-{data.registrationnumber.substring(3,5)}-{data.registrationnumber.substring(5,9)}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell>Lattitude,Longitude</DataTable.Cell>
-      <DataTable.Cell numeric>{latt},{long}</DataTable.Cell>
+      <DataTable.Cell>Place </DataTable.Cell>
+      <DataTable.Cell numeric>{placename}</DataTable.Cell>
     </DataTable.Row>
       
       </DataTable>

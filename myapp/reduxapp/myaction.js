@@ -89,30 +89,47 @@ export const removetoken=()=>{
     }
 }
 //post challan 
-export const addchallan=(postdata)=>{
+export const addchallan=(postdata,navigation)=>{
   return async(dispatch)=>{
     wardenapi.postchallan(postdata)
         .then(data=>{
           
           dispatch({type:'Post_Challan',payload:data})   
-          dispatch({type:'Post_Status',payload:"Succeeed"})  
-
-       
+          Toast.show({type: 'success',position: 'top',
+          text1: 'Success',
+          text2: 'Challan Sent Successfully 👋',
+          visibilityTime: 3000,}); 
+          navigation.popToTop()
+          navigation.navigate('wHome')       
               
         }).catch(err=>{
-          dispatch({type:'Post_Status',payload:"Failed"})  
+          Toast.show({type: 'error',position: 'top',
+          text1: 'Error',
+          text2: 'network error',
+      visibilityTime: 3000,}); 
+      navigation.navigate('challandetails')
           console.log(err)})
 
   }
 }
 //delete pending challan against challan id
-export const UpdatePendingChallan=(id,datas)=>{
+export const UpdatePendingChallan=(id,datas,navigation)=>{
   return async(dispatch)=>{
     wardenapi.updatepaymentstatus(id,datas).then(data=>{
         
-      console.log(data)
+      
       dispatch({type:'Update_PChalan',payload:data}) 
-  }).catch(err=>console.log(err))
+      Toast.show({type: 'success',position: 'top',
+      text1: 'Success',
+      text2: 'Chalan Submitted Successfully!!!! 👋',
+      visibilityTime: 3000,}); 
+      navigation.navigate('PChallans') 
+  }).catch(err=>{console.log(err)
+    Toast.show({type: 'error',position: 'top',
+          text1: 'Error',
+          text2: 'Not Submitted error came here???',
+      visibilityTime: 3000,}); 
+  })
 
   }
 

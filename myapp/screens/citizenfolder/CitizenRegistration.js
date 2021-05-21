@@ -66,7 +66,7 @@ const CitizenRegistration = ({navigation}) => {
 
 
               <View style={[appStyles.mt30]}>
-              <View style={[appStyles.row, appStyles.aiCenter]}>
+              <View style={[appStyles.row, appStyles.aiCenter],{marginTop:15,paddingTop:15}}>
     
                         <View style={appStyles.pr10}>
                           <Image

@@ -75,7 +75,7 @@ const HomeScreen = (props) => {
         >
           {  locations.map((marker,index)=>{
             return(
-                    <Marker    key={index}   coordinate={{longitude:marker.longitude,latitude:marker.latitude}}  title="MY current location"   /> 
+                    <Marker    key={index}   coordinate={{longitude:marker.longitude,latitude:marker.latitude}}  title="No Parking Area"   /> 
    
             )  })
            

@@ -19,16 +19,16 @@ const AllWardens = () => {
         <View>
             
             {
-                datas.map((warden,i)=>{
+                datas.map((warden)=>{
                     return(
-                        <>
+                        <View key={warden._id}>
                          <Card style={styles.mycard} onPress={()=>alert('mobile')}>
             <View style={styles.cardContent}>
             <Icon      name="account-details-outline" size={32} color="#006aff"                   />
-              <Text style={styles.mytext}>{warden.name}</Text>
+              <Text   style={styles.mytext}>{warden.name}</Text>
             </View>
          </Card>
-         </>
+         </View>
                         
                         
                   

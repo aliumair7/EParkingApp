@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { Input } from 'react-native-elements';
 import { Button } from 'react-native';
 import wardenapi from '../../api/WardenApi';
+import Toast from 'react-native-toast-message';
 
 
 const AddRecords = ({navigation}) => {
@@ -17,18 +18,48 @@ const AddRecords = ({navigation}) => {
     const[vehiclecolour,setcolor]=React.useState('')
     const[vehiclemodel,setmodel]=React.useState('')
 
+
+    React.useEffect(()=>{
+        setname('')
+        setfathername('')
+        setcnic()
+        setmobile()
+        setregno('')
+        setaddress('')
+        setgmail('')
+        setcolor('')
+        setmodel('')
+    },[])
     const AddRecord=()=>{
-        
-       
       wardenapi.addownerrecord({ownername,ownerfathername,ownercnic,ownermobilenumber,
         registrationnumber,owneraddress,ownergmail,vehiclecolour,vehiclemodel})
         .then(data=>{console.log(data)
-           
-        alert("Added successfully")
-        navigation.navigate('Home')
+            Toast.show({type: 'success',position: 'top',
+            text1: 'Success',
+            text2: 'Record Added Successfully  👋',
+            visibilityTime: 3000,}); 
+            setname('')
+            setfathername('')
+            setcnic()
+            setmobile()
+            setregno('')
+            setaddress('')
+            setgmail('')
+            setcolor('')
+            setmodel('')
+            navigation.navigate('AHome') 
+        
+        
         
      }
-        ).catch(err=>console.log(err.response.data))
+        ).catch(err=>
+            {
+                Toast.show({type: 'error',position: 'top',
+                text1: 'Error',
+                text2: err.response.data,
+            visibilityTime: 5000,});
+                console.log(err)})
+            
     }
 
     return (  
@@ -43,7 +74,7 @@ const AddRecords = ({navigation}) => {
         <Input   value={registrationnumber}         placeholder="Vehicle Number Plate"           onChangeText={text=>setregno(text)}        />
         <Input    value={vehiclecolour}        placeholder="Vehicle Color"            onChangeText={text=>setcolor(text)}       />
         <Input    value={vehiclemodel}        placeholder="Vehicle model"             onChangeText={text=>setmodel(text)}      />
-        <Button  title="Add"   onPress={(e)=>{
+        <Button  title="Add"   onPress={()=>{
             AddRecord()
         } 
     }  />

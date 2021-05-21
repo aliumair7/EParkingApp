@@ -44,16 +44,11 @@ const PendingChallans = ({navigation}) => {
             </View>
           
             {datas.length >0 ?        
-      (  
-        
-        <FlatList
+      (   <FlatList
 
 data={datas}
 keyExtractor={(item)=>item.key}
-
-
 renderItem={({item})=>{return(  
-   
   <ChallanCard
   img={images.challan}
   name={item.ownername}
@@ -68,9 +63,6 @@ renderItem={({item})=>{return(
   issuedate={item.issueDate}
   onPress={()=>{navigation.navigate('PaymentChallans',{dataitem:item})}}
   ></ChallanCard>
-
-
-
     )
 }}
 keyExtractor={item => item._id}
