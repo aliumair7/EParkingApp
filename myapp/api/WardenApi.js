@@ -22,7 +22,7 @@ getwarden=(wardenid)=>this.get("/api/warden/"+wardenid)
 //update warden profile
 updatewarden=(id,data)=>this.put("/api/warden/update/"+id,data)
 //get records against image link
-getrecords=(data)=>this.post("/api/challan/dummy",data);
+getrecords=(data)=>this.post("/api/challan/getrecords",data);
 postchallan=(data)=>this.post("/api/challan/add",data);
 
 getallchalan=(id)=>this.get("/api/challan/getall/"+id)

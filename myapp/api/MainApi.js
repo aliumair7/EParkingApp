@@ -1,6 +1,6 @@
 import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-axios.defaults.baseURL="http://192.168.8.100:3000"
+axios.defaults.baseURL="http://192.168.8.101:3000"
 //axios.defaults.headers.common["x-auth-token"]=AsyncStorage.setItem('token')
 class MainApi{
     constructor() {}
