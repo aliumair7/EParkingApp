@@ -10,6 +10,7 @@ import PaymentComponent from '../screens/citizenfolder/PaymentModule';
 import colors from '../assets/colors';
 import         {CitizenDrawerContent}        from './CitizenDrawerContent'
 import Guidelines from '../screens/citizenfolder/Guidelines';
+import CitizenUpdate from '../screens/citizenfolder/CitizenUpdate';
 
 
 const Drwaer=createDrawerNavigator()
@@ -153,6 +154,14 @@ const CitizenProfileStacNavigator=({navigation})=>{
 
         <CitizenProfileStack.Screen       name="CitizenProfile"    component={CitizenProfile}   
          options={{title:'Profile',
+        headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#28D6C0" 
+         onPress={()=>{navigation.openDrawer()}} />)
+        }} 
+         
+         
+            />
+            <CitizenProfileStack.Screen       name="CitizenUpdate"    component={CitizenUpdate}   
+         options={{title:'Update', headerShown:false,
         headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#28D6C0" 
          onPress={()=>{navigation.openDrawer()}} />)
         }} 

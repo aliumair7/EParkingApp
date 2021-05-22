@@ -137,7 +137,7 @@ const ChallanStacNavigator=({navigation})=>{
                     fontWeight:'bold' }   
             }
             }>
-                <ChallanStack.Screen       name="Challan"    component={DataDetect}    options={{title:'MakeChallan',
+                <ChallanStack.Screen       name="Challan"    component={DataDetect}    options={{title:'Add Challan',
                 headerLeft:()=>( <Icon.Button    name="ios-menu" size={25} backgroundColor="#28D6C0" 
                  onPress={()=>{navigation.openDrawer()}} />)
                 }}   />
@@ -169,7 +169,7 @@ const MainTab=()=>{
             name="Challan"
             component={MStacNavigator}
             options={{
-              tabBarLabel: 'Challans',
+              tabBarLabel: 'Add',
               tabBarIcon: ({ color }) => (
                 <MaterialCommunityIcons name="plus-outline" color={colors.white} size={28} />
               ),

@@ -8,6 +8,11 @@ class WardenApi extends MainApi{
 
 citizenreg=(data)=>this.post("/api/user/register",data);
 citizenlogin=(data)=>this.post("/api/user/login",data)
+//get citizen against his idcard number
+getcitizen=(id)=>this.get("/api/user/"+id)
+//update citizen data against his  id card number
+updatecitizen=(id,data)=>this.put("/api/user/update/"+id,data)
+//register warden 
 
 wardenreg=(data)=>this.post("/api/warden/register",data)
 

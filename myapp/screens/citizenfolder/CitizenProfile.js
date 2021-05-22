@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { images } from '../../assets/images';
 
-const CitizenProfile = () => {
+const CitizenProfile = ({navigation}) => {
     const citizen = useSelector(state => state.citizens)
     console.log(citizen)
     const dispatch=useDispatch()
@@ -59,7 +59,7 @@ const CitizenProfile = () => {
              mode="contained"
              theme={theme}
               onPress={() => {
-                alert('hello')
+                navigation.navigate('CitizenUpdate')
               }}>
                 Edit
             </Button>
